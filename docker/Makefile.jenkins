@@ -11,11 +11,14 @@ build-h2o-3:
 	@echo
 	@echo "+--Building--+"
 	./gradlew build -x test
+	@echo "+--Git Diff Check--+"
 	if [[ $(git diff) ]]; then \
 		echo "Non-zero git diff after running gradlew build:"; \
 		git diff; \
 		exit 1; \
 	fi
+	@echo "+--Gradle Check--+"
+	./gradlew -PdoCheckStyle check -x test
 
 test-package-py:
 	cd h2o-py/tests/ && rm -f -r testdir_hdfs
