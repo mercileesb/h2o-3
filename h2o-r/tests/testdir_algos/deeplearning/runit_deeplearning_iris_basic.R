@@ -1,4 +1,4 @@
-setwd(normalizePath(dirname(R.utils::commandArgs(asValues=TRUE)$"f")))
+# setwd(normalizePath(dirname(R.utils::commandArgs(asValues=TRUE)$"f")))
 source("../../../scripts/h2o-r-test-setup.R")
 
 
@@ -10,5 +10,6 @@ check.deeplearning_basic <- function() {
   
 }
 
-doTest("Deep Learning Test: Iris", check.deeplearning_basic)
+# doTest("Deep Learning Test: Iris", check.deeplearning_basic)
 
+check.deeplearning_basic()

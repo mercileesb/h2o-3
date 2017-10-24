@@ -98,8 +98,12 @@ def call(buildConfig) {
     //   timeoutValue: 120, lang: buildConfig.LANG_R
     // ],
     [
-      stageName: 'MOJO Compatibility', target: 'test-mojo-compatibility', rVersion: '3.4.1',
+      stageName: 'MOJO Compatibility', target: 'test-mojo-compatibility',
       timeoutValue: 30, lang: buildConfig.LANG_NONE, additionalTestPackages: [buildConfig.LANG_PY]
+    ],
+    [
+      stageName: 'INFO Check', target: 'test-info',
+      timeoutValue: 30, lang: buildConfig.LANG_NONE, additionalTestPackages: [buildConfig.LANG_R]
     ]
   ]
 
