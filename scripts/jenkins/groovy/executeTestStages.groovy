@@ -104,6 +104,10 @@ def call(buildConfig) {
     [
       stageName: 'INFO Check', target: 'test-info',
       timeoutValue: 30, lang: buildConfig.LANG_NONE, additionalTestPackages: [buildConfig.LANG_R]
+    ],
+    [
+      stageName: 'Py3.6 Test Demos', target: 'test-demos', pythonVersion: '3.6',
+      timeoutValue: 30, lang: buildConfig.LANG_PY
     ]
   ]
 
