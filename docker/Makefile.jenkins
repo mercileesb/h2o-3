@@ -11,6 +11,11 @@ build-h2o-3:
 	@echo
 	@echo "+--Building--+"
 	./gradlew build -x test
+	if [[ $(git diff) ]]; then \
+		echo "Non-zero git diff after running gradlew build:"; \
+		git diff; \
+		exit 1; \
+	fi
 
 test-package-py:
 	cd h2o-py/tests/ && rm -f -r testdir_hdfs
@@ -128,7 +133,7 @@ test-mojo-compatibility:
 	cd mojoland && ./gradlew clean && ./gradlew build
 	cd mojoland/mojo-py && python in_mojo_veritas.py
 
-test-info-check-real:
+test-info:
 	cd h2o-r/tests/ && ../../scripts/run.py --wipeall --geterrs --test testdir_algos/deeplearning/runit_deeplearning_iris_basic.R --jvm.xmx 2g
 	- cd h2o-r/tests/results && grep -v INFO java_0_0.out.txt > INFO_file.txt
 	@if [[ $(wc -c h2o-r/tests/results/INFO_file.txt | awk '{print $1}') -ne 0 ]]; then \

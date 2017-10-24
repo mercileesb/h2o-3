@@ -40,7 +40,7 @@ def execMake(target, String h2o3dir) {
   sh """
     export JAVA_HOME=/usr/lib/jvm/java-8-oracle
     export USER=jenkins
-    export LANG=en_US.UTF-8
+    export LANG=C.UTF-8
     locale
 
     echo "Activating Python ${env.PYTHON_VERSION}"
